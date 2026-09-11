@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waze Enterprises — Water Bottles in Rawalpindi</title>
+<meta name="description" content="Waze Enterprises sells 500ml and 1500ml water bottles in bulk. Based in Rawat Industrial Area, Rawalpindi. Order on WhatsApp.">
+<link rel="icon" href="assets/Waze_logo.png">
+<style>
+  :root{
+    --blue-900:#00131a;
+    --blue-800:#002b4d;
+    --blue-700:#004380;
+    --blue-600:#005bb3;
+    --blue-500:#0073e6;
+    --blue-400:#1a8cff;
+    --blue-100:#b3d9ff;
+    --blue-50:#e6f2ff;
+    --sky:#38bdf8;
+    --green:#25D366;
+    --ink:#0b2239;
+    --muted:#52708c;
+    --line:#d8e6f5;
+    --soft:#f4f9ff;
+    --shadow:0 10px 30px rgba(0,67,128,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:#fff;color:var(--ink);
+    font:16px/1.7 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--blue-600);text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{line-height:1.25;margin:0 0 .5em;letter-spacing:-.02em}
+  h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--blue-500);margin-bottom:.6rem}
+  .lead{color:var(--muted);font-size:1.05rem;max-width:60ch}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:24px;height:76px}
+  .logo img{height:38px;width:auto}
+  nav.links{margin-left:auto;display:flex;gap:26px;align-items:center}
+  nav.links a{color:var(--ink);font-weight:600;font-size:.95rem}
+  nav.links a:hover{color:var(--blue-500)}
+  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:700;
+    font-size:.95rem;border:2px solid transparent;cursor:pointer;
+    transition:transform .15s ease,box-shadow .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--blue-500),var(--blue-700));color:#fff;
+    box-shadow:0 8px 20px rgba(0,115,230,.28)}
+  .btn-light{background:#fff;color:var(--blue-700)}
+  .btn-wa{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.3)}
+  .btn-line{border-color:rgba(255,255,255,.45);color:#fff;background:transparent}
+  .menu-btn{display:none;margin-left:auto;background:none;border:0;font-size:1.6rem;
+    color:var(--blue-700);cursor:pointer}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(1000px 480px at 78% -10%, rgba(56,189,248,.35), transparent 60%),
+      linear-gradient(135deg,var(--blue-800) 0%, var(--blue-700) 45%, var(--blue-500) 100%)}
+  .hero::after{content:"";position:absolute;inset:auto 0 -1px 0;height:70px;
+    background:linear-gradient(to bottom right,transparent 49.6%,#fff 50%)}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;
+    gap:50px;align-items:center;padding:86px 24px 116px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);color:#fff}
+  .hero h1 span{color:var(--sky)}
+  .hero p{color:#cfe6ff;font-size:1.1rem;max-width:52ch}
+  .hero .eyebrow{color:var(--sky)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .hero-stats{display:flex;gap:34px;margin-top:42px;flex-wrap:wrap}
+  .hero-stats b{display:block;font-size:1.7rem;color:#fff;line-height:1.15}
+  .hero-stats span{font-size:.85rem;color:#a9d2ff}
+  .bottle-art{display:flex;justify-content:center;align-items:center}
+  .bottle-art svg{width:min(260px,70%);height:auto;
+    filter:drop-shadow(0 26px 46px rgba(0,20,45,.4));
+    animation:bob 6s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @media (prefers-reduced-motion:reduce){.bottle-art svg{animation:none}}
+
+  /* sections */
+  section{padding:88px 0}
+  .soft-bg{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .head{max-width:700px;margin-bottom:48px}
+  .grid{display:grid;gap:24px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px;
+    transition:transform .2s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card h3{font-size:1.12rem;margin-bottom:.35rem}
+  .card p{color:var(--muted);font-size:.95rem;margin:0}
+  .ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;
+    background:linear-gradient(135deg,var(--blue-50),var(--blue-100));color:var(--blue-700)}
+  .ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+
+  /* products */
+  .product{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:14px;
+    transition:transform .2s ease,box-shadow .2s ease}
+  .product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .product .top{background:linear-gradient(135deg,var(--blue-600),var(--blue-400));
+    color:#fff;padding:26px 30px}
+  .product .top h3{color:#fff;margin:0;font-size:1.25rem}
+  .product .top em{font-style:normal;color:#cfe6ff;font-size:.82rem;letter-spacing:.08em;
+    text-transform:uppercase;font-weight:700}
+  .product ul{list-style:none;margin:0;padding:22px 30px}
+  .product li{padding:9px 0 9px 26px;position:relative;color:var(--muted);font-size:.95rem;
+    border-bottom:1px dashed var(--line)}
+  .product li:last-child{border-bottom:0}
+  .product li::before{content:"";position:absolute;left:0;top:17px;width:10px;height:10px;
+    border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--blue-400)}
+  .product .foot{padding:0 30px 28px}
+  .product .foot a{display:block;text-align:center}
+
+  /* steps */
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .step{position:relative;padding-top:56px}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    font-weight:800;background:var(--blue-700);color:#fff;box-shadow:0 0 0 6px var(--blue-50)}
+  .step h3{font-size:1.05rem}
+  .step p{color:var(--muted);font-size:.95rem;margin:0}
+
+  /* why us */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .checks{list-style:none;padding:0;margin:24px 0 0}
+  .checks li{position:relative;padding:9px 0 9px 34px;color:var(--muted)}
+  .checks li::before{content:"✓";position:absolute;left:0;top:9px;width:22px;height:22px;
+    border-radius:50%;background:var(--blue-500);color:#fff;font-size:.75rem;font-weight:800;
+    display:grid;place-items:center}
+  .panel{background:linear-gradient(135deg,var(--blue-800),var(--blue-600));
+    border-radius:20px;padding:42px;color:#fff;box-shadow:var(--shadow)}
+  .panel h3{color:#fff;font-size:1.15rem}
+  .panel .row{display:flex;justify-content:space-between;gap:16px;padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.16)}
+  .panel .row:last-child{border-bottom:0}
+  .panel .row span{color:#bfe0ff;font-size:.93rem}
+  .panel .row b{text-align:right}
+
+  /* order form */
+  .order{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px;
+    box-shadow:var(--shadow)}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;
+    font:inherit;font-size:.95rem;color:var(--ink);background:#fff;transition:border-color .15s ease}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--blue-400);box-shadow:0 0 0 4px var(--blue-50)}
+  .field textarea{resize:vertical;min-height:92px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-card .btn-wa{width:100%;text-align:center;border:0;font-size:1rem;padding:15px}
+  .note{font-size:.85rem;color:var(--muted);text-align:center;margin:14px 0 0}
+  .err{color:#c62828;font-size:.85rem;margin-top:6px;display:none}
+  .err.show{display:block}
+  .cbox{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:22px;margin-bottom:16px}
+  .cbox .ico{margin:0;flex:0 0 48px}
+  .cbox h3{font-size:1rem;margin:0 0 3px}
+  .cbox p{margin:0;color:var(--muted);font-size:.95rem}
+
+  /* cta */
+  .cta{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));color:#fff;
+    border-radius:20px;padding:54px;text-align:center;box-shadow:var(--shadow)}
+  .cta h2{color:#fff}
+  .cta p{color:#d4e9ff;max-width:52ch;margin:0 auto 26px}
+
+  /* float button */
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;
+    border-radius:50%;background:var(--green);display:grid;place-items:center;
+    box-shadow:0 10px 26px rgba(37,211,102,.45);transition:transform .2s ease}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:31px;height:31px;fill:#fff}
+
+  /* footer */
+  footer{background:var(--blue-900);color:#9fc4e3;padding:54px 0 26px;font-size:.93rem}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:38px;padding-bottom:32px;
+    border-bottom:1px solid rgba(255,255,255,.12)}
+  footer img{height:34px;background:#fff;padding:8px 12px;border-radius:10px;margin-bottom:14px}
+  footer h4{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{padding:5px 0}
+  footer a{color:#9fc4e3}
+  footer a:hover{color:#fff}
+  .fbot{padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:.86rem;color:#6f9cc0}
+
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;padding-bottom:92px}
+    .droplet-art{order:-1}
+    .g3,.g4,.steps,.split,.order,.fgrid{grid-template-columns:1fr}
+    nav.links{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;
+      flex-direction:column;gap:0;padding:10px 24px 20px;border-bottom:1px solid var(--line)}
+    nav.links.open{display:flex}
+    nav.links a{width:100%;padding:12px 0;border-bottom:1px solid var(--line)}
+    nav.links .btn{margin-top:12px;text-align:center;border-bottom:0}
+    .menu-btn{display:block}
+    .panel,.cta,.form-card{padding:30px}
+  }
+  @media (max-width:560px){
+    section{padding:60px 0}
+    .g4{grid-template-columns:1fr 1fr}
+    .two{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><img src="assets/Waze_logo.png" alt="Waze Enterprises"></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <nav class="links" id="links">
+      <a href="#about">About</a>
+      <a href="#bottles">Bottles</a>
+      <a href="#how">How It Works</a>
+      <a href="#why">Why Us</a>
+      <a href="#order">Order</a>
+      <a class="btn btn-primary" href="#order">Get Price</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Rawat Industrial Area, Rawalpindi</span>
+      <h1>We make and sell <span>water bottles</span> in bulk.</h1>
+      <p>Waze Enterprises makes clean, clear water bottles and sells them in large quantity to water plants, shops and dealers all over Pakistan.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="#order">Order on WhatsApp</a>
+        <a class="btn btn-line" href="#bottles">See Our Bottles</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>500ml &amp; 1500ml</b><span>Two main sizes</span></div>
+        <div><b>Best quality</b><span>Safe for drinking water</span></div>
+        <div><b>Bulk rates</b><span>Sold per 1,000 bottles</span></div>
+      </div>
+    </div>
+    <div class="bottle-art">
+      <svg viewBox="0 0 150 330" role="img" aria-label="Water bottle">
+        <defs>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#ffffff" stop-opacity=".34"/>
+            <stop offset="32%"  stop-color="#ffffff" stop-opacity=".10"/>
+            <stop offset="70%"  stop-color="#ffffff" stop-opacity=".07"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity=".24"/>
+          </linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#7fd4ff" stop-opacity=".85"/>
+            <stop offset="55%"  stop-color="#38bdf8" stop-opacity=".70"/>
+            <stop offset="100%" stop-color="#0ea5e9" stop-opacity=".80"/>
+          </linearGradient>
+          <clipPath id="bodyClip">
+            <path d="M40 92c0-9 4-13 4-22V58h62v12c0 9 4 13 4 22v192c0 16-9 26-25 26H65c-16 0-25-10-25-26V92z"/>
+          </clipPath>
+        </defs>
+
+        <!-- cap -->
+        <rect x="50" y="10" width="50" height="30" rx="7" fill="#ffffff" opacity=".9"/>
+        <g stroke="#bcdcf7" stroke-width="1.4" opacity=".85">
+          <line x1="57" y1="14" x2="57" y2="36"/>
+          <line x1="65" y1="14" x2="65" y2="36"/>
+          <line x1="75" y1="14" x2="75" y2="36"/>
+          <line x1="85" y1="14" x2="85" y2="36"/>
+          <line x1="93" y1="14" x2="93" y2="36"/>
+        </g>
+        <!-- neck ring -->
+        <rect x="47" y="42" width="56" height="9" rx="4.5" fill="#ffffff" opacity=".55"/>
+        <rect x="53" y="51" width="44" height="9" rx="3" fill="#ffffff" opacity=".22"/>
+
+        <!-- body -->
+        <path d="M40 92c0-9 4-13 4-22V58h62v12c0 9 4 13 4 22v192c0 16-9 26-25 26H65c-16 0-25-10-25-26V92z"
+              fill="url(#glass)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+
+        <!-- water inside -->
+        <g clip-path="url(#bodyClip)">
+          <path d="M36 128c14 0 14-8 28-8s14 8 28 8 14-8 28-8v188H36V128z" fill="url(#water)"/>
+          <!-- grip rings -->
+          <g stroke="rgba(255,255,255,.42)" stroke-width="5" stroke-linecap="round">
+            <line x1="36" y1="176" x2="114" y2="176"/>
+            <line x1="36" y1="196" x2="114" y2="196"/>
+            <line x1="36" y1="216" x2="114" y2="216"/>
+          </g>
+          <!-- shine -->
+          <rect x="52" y="72" width="10" height="222" rx="5" fill="#fff" opacity=".28"/>
+          <rect x="68" y="88" width="4" height="190" rx="2" fill="#fff" opacity=".16"/>
+        </g>
+
+        <!-- label -->
+        <rect x="40" y="148" width="74" height="70" fill="#ffffff"/>
+        <line x1="40" y1="148" x2="114" y2="148" stroke="#8fc4ee" stroke-width="1.2"/>
+        <line x1="40" y1="218" x2="114" y2="218" stroke="#8fc4ee" stroke-width="1.2"/>
+
+        <!-- small droplet mark, same idea as the logo -->
+        <path d="M77 156c0 0 6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z" fill="#1a8cff"/>
+        <path d="M77 166.5c0 0 2.6 2.8 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.6 2.6-4.4 2.6-4.4z" fill="#ffffff"/>
+
+        <text x="77" y="190" text-anchor="middle" fill="#004380"
+              font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700"
+              letter-spacing="1" textLength="48" lengthAdjust="spacingAndGlyphs">WAZE</text>
+        <text x="77" y="202" text-anchor="middle" fill="#0073e6"
+              font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700"
+              letter-spacing="1" textLength="58" lengthAdjust="spacingAndGlyphs">ENTERPRISES</text>
+
+        <line x1="58" y1="208" x2="96" y2="208" stroke="#b3d9ff" stroke-width="1.2"/>
+        <text x="77" y="214.5" text-anchor="middle" fill="#52708c"
+              font-family="Segoe UI, Arial, sans-serif" font-size="4.6" font-weight="600"
+              letter-spacing=".8" textLength="44" lengthAdjust="spacingAndGlyphs">DRINKING WATER BOTTLE</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">About us</span>
+      <h2>Water bottles, made in our own factory</h2>
+      <p class="lead">We are Waze Enterprises from Rawat Industrial Area, Rawalpindi. We make our own water bottles in our factory and sell them in bulk. Because we make them ourselves, you get a fair price and the same quality every time.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.3 6 10a6 6 0 0 1-12 0c0-3.7 6-10 6-10z"/></svg></div>
+        <h3>Safe for water</h3>
+        <p>Our bottles are made from good quality plastic that is safe for drinking water.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M10 3h4v3l2 2v12H8V8l2-2V3z"/><path d="M8 12h8"/></svg></div>
+        <h3>Made by us</h3>
+        <p>We make every bottle in our own factory, so we can keep the quality the same.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+        <h3>Bulk orders</h3>
+        <p>We sell in bags of 1,000 bottles. Big orders are always welcome.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>On time</h3>
+        <p>We keep bottles ready in stock, so your order goes out without long waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTLES -->
+<section id="bottles" class="soft-bg">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Our bottles</span>
+      <h2>Pick the size you need</h2>
+      <p class="lead">These are the sizes we sell every day. Need a different size? Just ask us.</p>
+    </div>
+    <div class="grid g3">
+      <div class="product">
+        <div class="top"><em>Water bottle</em><h3>500 ml</h3></div>
+        <ul>
+          <li>Small bottle, most sold size</li>
+          <li>Clear and clean look</li>
+          <li>Fits normal caps</li>
+          <li>Sold in 1,000 bottle packs</li>
+        </ul>
+        <div class="foot"><a class="btn btn-primary" href="#order" data-size="500 ml Bottle">Ask Price</a></div>
+      </div>
+      <div class="product">
+        <div class="top"><em>Water bottle</em><h3>1500 ml</h3></div>
+        <ul>
+          <li>Big family size bottle</li>
+          <li>Strong bottom, no leaking</li>
+          <li>Fits normal caps</li>
+          <li>Sold in 1,000 bottle packs</li>
+        </ul>
+        <div class="foot"><a class="btn btn-primary" href="#order" data-size="1500 ml Bottle">Ask Price</a></div>
+      </div>
+      <div class="product">
+        <div class="top"><em>Other size</em><h3>Made for you</h3></div>
+        <ul>
+          <li>Tell us the size you want</li>
+          <li>We make it for big orders</li>
+          <li>Sample shown before order</li>
+          <li>Monthly supply can be fixed</li>
+        </ul>
+        <div class="foot"><a class="btn btn-primary" href="#order" data-size="Other size">Ask Price</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How it works</span>
+      <h2>Ordering is simple</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Tell us what you need</h3>
+        <p>Fill the small form below, or send us a WhatsApp with the size and how many bottles you want.</p>
+      </div>
+      <div class="step">
+        <h3>We give you the price</h3>
+        <p>We reply with the rate and how soon we can give you the bottles. No hidden charges.</p>
+      </div>
+      <div class="step">
+        <h3>You get your bottles</h3>
+        <p>Once you say yes, we pack your bottles and hand them over with a proper bill.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="soft-bg">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Why choose us</span>
+      <h2>Good bottles, honest dealing</h2>
+      <p class="lead">We have been supplying bottles to water plants and shops for a long time. Our customers stay with us because we keep our word.</p>
+      <ul class="checks">
+        <li>You get the full count you paid for</li>
+        <li>Same quality in every order</li>
+        <li>Clear rates, no extra charges later</li>
+        <li>Proper bill with every delivery</li>
+        <li>Easy to reach us on phone or WhatsApp</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Quick information</h3>
+      <div class="row"><span>Sizes</span><b>500 ml · 1500 ml</b></div>
+      <div class="row"><span>Pack</span><b>1,000 bottles</b></div>
+      <div class="row"><span>Price</span><b>Ask us for rate</b></div>
+      <div class="row"><span>Order size</span><b>Bulk orders only</b></div>
+      <div class="row"><span>City</span><b>Rawalpindi</b></div>
+      <div class="row"><span>Delivery</span><b>All over Pakistan</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Order now</span>
+      <h2>Fill this form and send on WhatsApp</h2>
+      <p class="lead">Write your details below and press the button. Your message will open in WhatsApp and come straight to us. We will reply with the price.</p>
+    </div>
+
+    <div class="order">
+      <div class="form-card">
+        <form id="waForm" novalidate>
+          <div class="two">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="field">
+              <label for="phone">Your phone number</label>
+              <input type="tel" id="phone" placeholder="03xx-xxxxxxx">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="city">Your city</label>
+            <input type="text" id="city" placeholder="Example: Rawalpindi">
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="size">Bottle size</label>
+              <select id="size">
+                <option>500 ml Bottle</option>
+                <option>1500 ml Bottle</option>
+                <option>Both sizes</option>
+                <option>Other size</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="qty">How many bottles</label>
+              <input type="text" id="qty" placeholder="Example: 5000">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="msg">Anything else (not must)</label>
+            <textarea id="msg" placeholder="Write here if you want to tell us something more"></textarea>
+          </div>
+
+          <p class="err" id="err">Please write your name and phone number.</p>
+          <button type="submit" class="btn btn-wa">Send on WhatsApp</button>
+          <p class="note">This opens WhatsApp with your message ready. Just press send.</p>
+        </form>
+      </div>
+
+      <div>
+        <div class="cbox">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5c0-1 .9-2 2-2h2l2 5-2 1a12 12 0 0 0 5 5l1-2 5 2v2c0 1.1-.9 2-2 2A16 16 0 0 1 4 5z"/></svg></div>
+          <div>
+            <h3>Call or WhatsApp</h3>
+            <p><a href="tel:+923439998954">0343-9998954</a></p>
+          </div>
+        </div>
+        <div class="cbox">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <div>
+            <h3>Come and see us</h3>
+            <p>Street S-6, Rawat Industrial Area,<br>Rawalpindi, Pakistan</p>
+          </div>
+        </div>
+        <div class="cbox">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <h3>Open hours</h3>
+            <p>Monday to Saturday<br>9:00 AM to 6:00 PM</p>
+          </div>
+        </div>
+        <div class="cbox" style="margin-bottom:0">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+          <div>
+            <h3>Proper bill</h3>
+            <p>You get a written bill with every order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta" style="margin-top:54px">
+      <h2>Need bottles this month?</h2>
+      <p>We have 500 ml and 1500 ml bottles ready in stock. Call us today and we will keep them for you.</p>
+      <a class="btn btn-light" href="tel:+923439998954">Call 0343-9998954</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <img src="assets/Waze_logo.png" alt="Waze Enterprises">
+        <p>We make and sell water bottles in bulk from Rawat Industrial Area, Rawalpindi.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#bottles">Our bottles</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#order">Order now</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+923439998954">0343-9998954</a></li>
+          <li>Street S-6, Rawat Industrial Area</li>
+          <li>Rawalpindi, Pakistan</li>
+          <li>Mon – Sat, 9 AM – 6 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>&copy; <span id="yr">2026</span> Waze Enterprises. All rights reserved.</span>
+      <span>Made in Rawalpindi, Pakistan</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+</a>
+
+<script>
+  var WA_NUMBER = "923439998954"; // Waze Enterprises WhatsApp number
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // mobile menu
+  var btn = document.getElementById('menuBtn'), links = document.getElementById('links');
+  btn.addEventListener('click', function(){ links.classList.toggle('open'); });
+  links.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') links.classList.remove('open');
+  });
+
+  // "Ask Price" buttons pick the size in the form
+  var sizeBox = document.getElementById('size');
+  document.querySelectorAll('[data-size]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var want = a.getAttribute('data-size');
+      for (var i = 0; i < sizeBox.options.length; i++) {
+        if (sizeBox.options[i].text === want) { sizeBox.selectedIndex = i; break; }
+      }
+    });
+  });
+
+  function waLink(text){
+    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+  }
+
+  // floating button
+  document.getElementById('waFloat').href =
+    waLink("Assalam o Alaikum, I want to ask about water bottles.");
+
+  // form -> whatsapp message
+  document.getElementById('waForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name  = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var city  = document.getElementById('city').value.trim();
+    var size  = sizeBox.value;
+    var qty   = document.getElementById('qty').value.trim();
+    var msg   = document.getElementById('msg').value.trim();
+    var err   = document.getElementById('err');
+
+    if (!name || !phone) { err.classList.add('show'); return; }
+    err.classList.remove('show');
+
+    var lines = [
+      "Assalam o Alaikum Waze Enterprises,",
+      "",
+      "I want to order water bottles.",
+      "",
+      "Name: " + name,
+      "Phone: " + phone
+    ];
+    if (city) lines.push("City: " + city);
+    lines.push("Bottle size: " + size);
+    if (qty) lines.push("Quantity: " + qty + " bottles");
+    if (msg) lines.push("", "Note: " + msg);
+    lines.push("", "Please tell me the price. Thank you.");
+
+    window.open(waLink(lines.join("\n")), "_blank");
+  });
+</script>
+</body>
+</html>
