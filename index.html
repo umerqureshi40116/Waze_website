@@ -6,23 +6,31 @@
 <title>Waze Enterprises — Water Bottles in Rawalpindi</title>
 <meta name="description" content="Waze Enterprises sells 500ml and 1500ml water bottles in bulk. Based in Rawat Industrial Area, Rawalpindi. Order on WhatsApp.">
 <link rel="icon" href="assets/Waze_logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero-bottles.jpg">
+<script>document.documentElement.className += " js";</script>
 <style>
   :root{
-    --blue-900:#00131a;
+    --blue-900:#001426;
     --blue-800:#002b4d;
     --blue-700:#004380;
     --blue-600:#005bb3;
     --blue-500:#0073e6;
     --blue-400:#1a8cff;
-    --blue-100:#b3d9ff;
-    --blue-50:#e6f2ff;
-    --sky:#38bdf8;
+    --blue-100:#cfe6ff;
+    --blue-50:#eef6ff;
+    --sky:#5cc8ff;
     --green:#25D366;
     --ink:#0b2239;
     --muted:#52708c;
-    --line:#d8e6f5;
-    --soft:#f4f9ff;
-    --shadow:0 10px 30px rgba(0,67,128,.10);
+    --line:#dde9f5;
+    --soft:#f5f9fe;
+    --shadow:0 18px 40px rgba(0,43,77,.12);
+    --shadow-lg:0 30px 60px rgba(0,20,45,.28);
+    --r:18px;
+    --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -31,128 +39,206 @@
     font:16px/1.7 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  img{max-width:100%;display:block}
+  img{max-width:100%;height:auto;display:block}
   a{color:var(--blue-600);text-decoration:none}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  h1,h2,h3{line-height:1.25;margin:0 0 .5em;letter-spacing:-.02em}
-  h2{font-size:clamp(1.6rem,3vw,2.2rem)}
-  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--blue-500);margin-bottom:.6rem}
-  .lead{color:var(--muted);font-size:1.05rem;max-width:60ch}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,.btn,.stat b{font-family:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif}
+  h1,h2,h3{line-height:1.2;margin:0 0 .5em;letter-spacing:-.02em}
+  h2{font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:800}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--blue-500);margin-bottom:.8rem}
+  .eyebrow::before{content:"";width:26px;height:2px;background:currentColor;border-radius:2px}
+  .lead{color:var(--muted);font-size:1.07rem;max-width:60ch}
+
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;
+    transform-origin:0 50%;transform:scaleX(0);
+    background:linear-gradient(90deg,var(--sky),var(--blue-500))}
 
   /* header */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);
-    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+    transition:box-shadow .3s ease}
+  header.scrolled{box-shadow:0 8px 24px rgba(0,43,77,.08)}
   .nav{display:flex;align-items:center;gap:24px;height:76px}
-  .logo img{height:38px;width:auto}
-  nav.links{margin-left:auto;display:flex;gap:26px;align-items:center}
-  nav.links a{color:var(--ink);font-weight:600;font-size:.95rem}
+  .logo img{height:40px;width:auto;transition:transform .3s ease}
+  .logo:hover img{transform:scale(1.04)}
+  nav.links{margin-left:auto;display:flex;gap:28px;align-items:center}
+  nav.links a{position:relative;color:var(--ink);font-weight:600;font-size:.95rem}
+  nav.links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
+    background:var(--blue-500);border-radius:2px;transform:scaleX(0);transform-origin:right;
+    transition:transform .3s var(--ease)}
+  nav.links a:not(.btn):hover::after{transform:scaleX(1);transform-origin:left}
   nav.links a:hover{color:var(--blue-500)}
-  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:700;
-    font-size:.95rem;border:2px solid transparent;cursor:pointer;
-    transition:transform .15s ease,box-shadow .2s ease}
+  .btn{position:relative;overflow:hidden;display:inline-block;padding:14px 28px;border-radius:999px;
+    font-weight:700;font-size:.95rem;border:2px solid transparent;cursor:pointer;
+    transition:transform .15s ease,box-shadow .2s ease,background .2s ease}
+  .btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);
+    transform:skewX(-20deg);transition:left .7s ease;pointer-events:none}
+  .btn:hover::after{left:130%}
   .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:linear-gradient(135deg,var(--blue-500),var(--blue-700));color:#fff;
-    box-shadow:0 8px 20px rgba(0,115,230,.28)}
+  .btn-primary{background:var(--blue-500);color:#fff;box-shadow:0 10px 22px rgba(0,115,230,.28)}
+  .btn-primary:hover{background:var(--blue-600)}
   .btn-light{background:#fff;color:var(--blue-700)}
-  .btn-wa{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.3)}
-  .btn-line{border-color:rgba(255,255,255,.45);color:#fff;background:transparent}
+  .btn-wa{background:var(--green);color:#fff;box-shadow:0 10px 22px rgba(37,211,102,.32)}
+  .btn-line{border-color:rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.06)}
+  .btn-line:hover{background:rgba(255,255,255,.14)}
   .menu-btn{display:none;margin-left:auto;background:none;border:0;font-size:1.6rem;
     color:var(--blue-700);cursor:pointer}
 
   /* hero */
-  .hero{position:relative;overflow:hidden;color:#fff;
-    background:radial-gradient(1000px 480px at 78% -10%, rgba(56,189,248,.35), transparent 60%),
-      linear-gradient(135deg,var(--blue-800) 0%, var(--blue-700) 45%, var(--blue-500) 100%)}
-  .hero::after{content:"";position:absolute;inset:auto 0 -1px 0;height:70px;
-    background:linear-gradient(to bottom right,transparent 49.6%,#fff 50%)}
-  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;
-    gap:50px;align-items:center;padding:86px 24px 116px}
-  .hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);color:#fff}
-  .hero h1 span{color:var(--sky)}
-  .hero p{color:#cfe6ff;font-size:1.1rem;max-width:52ch}
+  .hero{position:relative;overflow:hidden;color:#fff;background:var(--blue-900)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:url("assets/img/hero-bottles.jpg") center/cover no-repeat;
+    animation:kenburns 26s ease-in-out infinite alternate}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg,rgba(0,20,38,.96) 0%,rgba(0,43,77,.90) 42%,rgba(0,67,128,.55) 100%)}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;
+    align-items:center;padding:90px 24px 150px}
+  .hero h1{font-size:clamp(2.2rem,4.8vw,3.7rem);font-weight:800;color:#fff}
+  .hero h1 span{color:var(--sky);
+    background:linear-gradient(90deg,#5cc8ff 0%,#c6f0ff 50%,#5cc8ff 100%);background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    animation:shimmer 5s linear infinite}
+  .hero p{color:#d3e8ff;font-size:1.12rem;max-width:50ch}
   .hero .eyebrow{color:var(--sky)}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-  .hero-stats{display:flex;gap:34px;margin-top:42px;flex-wrap:wrap}
-  .hero-stats b{display:block;font-size:1.7rem;color:#fff;line-height:1.15}
-  .hero-stats span{font-size:.85rem;color:#a9d2ff}
-  .bottle-art{display:flex;justify-content:center;align-items:center}
-  .bottle-art svg{width:min(260px,70%);height:auto;
-    filter:drop-shadow(0 26px 46px rgba(0,20,45,.4));
-    animation:bob 6s ease-in-out infinite}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-  @media (prefers-reduced-motion:reduce){.bottle-art svg{animation:none}}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .hero .btn-wa{animation:glow 2.8s ease-in-out 1.5s infinite}
+
+  /* hero text comes in line by line */
+  .hero-text>*{animation:fadeUp .9s var(--ease) both}
+  .hero-text>:nth-child(2){animation-delay:.12s}
+  .hero-text>:nth-child(3){animation-delay:.24s}
+  .hero-text>:nth-child(4){animation-delay:.36s}
+
+  /* rising bubbles */
+  .bubbles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .bubbles span{position:absolute;bottom:-40px;left:var(--x);width:var(--s);height:var(--s);
+    border-radius:50%;border:1px solid rgba(255,255,255,.28);
+    background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(255,255,255,.06) 62%);
+    opacity:0;animation:bubble var(--t) linear var(--d) infinite}
+
+  .hero-photo{position:relative;margin:0;justify-self:center;width:min(430px,100%);
+    animation:photoIn 1.1s var(--ease) .25s both}
+  .hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:26px;
+    border:6px solid rgba(255,255,255,.14);box-shadow:var(--shadow-lg);
+    animation:float 7s ease-in-out 1.4s infinite}
+  .chip{position:absolute;background:#fff;color:var(--ink);border-radius:14px;
+    padding:12px 16px;box-shadow:0 14px 30px rgba(0,20,45,.25);line-height:1.3;
+    animation:pop .7s var(--ease) both,floatSm 5s ease-in-out infinite}
+  .chip b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1rem;color:var(--blue-700)}
+  .chip span{font-size:.8rem;color:var(--muted)}
+  .chip.c1{left:-34px;bottom:48px;animation-delay:.9s,1.6s}
+  .chip.c2{right:-22px;top:34px;background:var(--green);color:#fff;animation-delay:1.1s,2.6s}
+  .chip.c2 b{color:#fff}
+  .chip.c2 span{color:#eafff1}
+
+  /* stats bar overlapping hero */
+  .stats{position:relative;z-index:5;margin-top:-72px}
+  .stats .bar{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;
+    border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+  .stat{padding:26px 28px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-size:1.3rem;color:var(--blue-700);line-height:1.25}
+  .stat>span{font-size:.88rem;color:var(--muted)}
 
   /* sections */
-  section{padding:88px 0}
-  .soft-bg{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  section{padding:96px 0}
+  .soft-bg{background:var(--soft)}
   .head{max-width:700px;margin-bottom:48px}
-  .grid{display:grid;gap:24px}
+  .head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .head.center .eyebrow{justify-content:center}
+  .head.center .lead{margin:0 auto}
+  .grid{display:grid;gap:26px}
   .g3{grid-template-columns:repeat(3,1fr)}
-  .g4{grid-template-columns:repeat(4,1fr)}
 
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px;
-    transition:transform .2s ease,box-shadow .2s ease}
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .card h3{font-size:1.12rem;margin-bottom:.35rem}
-  .card p{color:var(--muted);font-size:.95rem;margin:0}
-  .ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;
-    background:linear-gradient(135deg,var(--blue-50),var(--blue-100));color:var(--blue-700)}
-  .ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.9;
-    stroke-linecap:round;stroke-linejoin:round}
+  /* about */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .photo-frame{position:relative;margin:0}
+  .photo-frame img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:22px;box-shadow:var(--shadow)}
+  .photo-frame .badge{position:absolute;right:-18px;bottom:-22px;background:var(--blue-700);
+    color:#fff;border-radius:16px;padding:18px 22px;box-shadow:var(--shadow);line-height:1.3}
+  .photo-frame .badge b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.15rem}
+  .photo-frame .badge span{font-size:.82rem;color:var(--blue-100)}
+  .points{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;margin-top:30px}
+  .points div{border-left:3px solid var(--blue-400);padding-left:16px}
+  .points h3{font-size:1.02rem;margin:0 0 4px}
+  .points p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.6}
 
   /* products */
-  .product{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:14px;
-    transition:transform .2s ease,box-shadow .2s ease}
-  .product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .product .top{background:linear-gradient(135deg,var(--blue-600),var(--blue-400));
-    color:#fff;padding:26px 30px}
-  .product .top h3{color:#fff;margin:0;font-size:1.25rem}
-  .product .top em{font-style:normal;color:#cfe6ff;font-size:.82rem;letter-spacing:.08em;
-    text-transform:uppercase;font-weight:700}
-  .product ul{list-style:none;margin:0;padding:22px 30px}
-  .product li{padding:9px 0 9px 26px;position:relative;color:var(--muted);font-size:.95rem;
-    border-bottom:1px dashed var(--line)}
-  .product li:last-child{border-bottom:0}
-  .product li::before{content:"";position:absolute;left:0;top:17px;width:10px;height:10px;
+  .product{display:flex;flex-direction:column;overflow:hidden;background:#fff;
+    border:1px solid var(--line);border-radius:var(--r);
+    transition:transform .25s ease,box-shadow .25s ease}
+  .product:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .product .ph{position:relative;overflow:hidden;background:var(--blue-50)}
+  .product .ph img{width:100%;aspect-ratio:5/4;object-fit:cover;transition:transform .6s var(--ease)}
+  .product:hover .ph img{transform:scale(1.06)}
+  .product .tag{position:absolute;left:16px;top:16px;background:#fff;color:var(--blue-700);
+    font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px;box-shadow:0 6px 14px rgba(0,20,45,.15)}
+  .product .body{padding:24px 28px 28px;display:flex;flex-direction:column;flex:1}
+  .product h3{font-size:1.4rem;margin:0}
+  .product .sub{color:var(--blue-500);font-weight:700;font-size:.85rem;margin-bottom:10px}
+  .product ul{list-style:none;margin:0 0 22px;padding:0;flex:1}
+  .product li{padding:7px 0 7px 26px;position:relative;color:var(--muted);font-size:.95rem}
+  .product li::before{content:"";position:absolute;left:2px;top:15px;width:9px;height:9px;
     border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--blue-400)}
-  .product .foot{padding:0 30px 28px}
-  .product .foot a{display:block;text-align:center}
+  .product .btn{text-align:center}
+
+  /* factory gallery */
+  .gallery{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:260px 260px;gap:20px}
+  .gallery figure{position:relative;margin:0;overflow:hidden;border-radius:var(--r)}
+  .gallery figure:first-child{grid-row:span 2}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .gallery figure:hover img{transform:scale(1.06)}
+  .gallery figcaption{position:absolute;inset:auto 0 0 0;padding:40px 22px 18px;color:#fff;
+    background:linear-gradient(to top,rgba(0,20,38,.85),transparent);transition:padding .4s var(--ease)}
+  .gallery figure:hover figcaption{padding-bottom:26px}
+  .gallery figcaption b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.05rem}
+  .gallery figcaption span{font-size:.88rem;color:#cfe3f7}
 
   /* steps */
   .steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .step{position:relative;padding-top:56px}
-  .step::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;
-    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
-    font-weight:800;background:var(--blue-700);color:#fff;box-shadow:0 0 0 6px var(--blue-50)}
-  .step h3{font-size:1.05rem}
+  .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:32px 28px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .step:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blue-100)}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;
+    font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:2.4rem;line-height:1;
+    color:var(--blue-100);margin-bottom:14px;transition:color .25s ease}
+  .step:hover::before{color:var(--blue-400)}
+  .step h3{font-size:1.1rem}
   .step p{color:var(--muted);font-size:.95rem;margin:0}
 
   /* why us */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
   .checks{list-style:none;padding:0;margin:24px 0 0}
-  .checks li{position:relative;padding:9px 0 9px 34px;color:var(--muted)}
-  .checks li::before{content:"✓";position:absolute;left:0;top:9px;width:22px;height:22px;
+  .checks li{position:relative;padding:9px 0 9px 36px;color:var(--ink)}
+  .checks li::before{content:"✓";position:absolute;left:0;top:10px;width:24px;height:24px;
     border-radius:50%;background:var(--blue-500);color:#fff;font-size:.75rem;font-weight:800;
     display:grid;place-items:center}
-  .panel{background:linear-gradient(135deg,var(--blue-800),var(--blue-600));
-    border-radius:20px;padding:42px;color:#fff;box-shadow:var(--shadow)}
-  .panel h3{color:#fff;font-size:1.15rem}
-  .panel .row{display:flex;justify-content:space-between;gap:16px;padding:15px 0;
-    border-bottom:1px solid rgba(255,255,255,.16)}
+  .why-photo{position:relative;border-radius:22px;overflow:hidden;min-height:480px;
+    display:flex;align-items:flex-end;padding:26px;box-shadow:var(--shadow);
+    background:url("assets/img/bottles-rows.jpg") center/cover no-repeat;
+    transition:background-size .8s ease}
+  .panel{width:100%;background:rgba(0,27,51,.82);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px 28px;color:#fff}
+  .panel h3{color:#fff;font-size:1.05rem;margin-bottom:6px}
+  .panel .row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.14);font-size:.94rem}
   .panel .row:last-child{border-bottom:0}
-  .panel .row span{color:#bfe0ff;font-size:.93rem}
+  .panel .row span{color:#b8d8f5}
   .panel .row b{text-align:right}
 
   /* order form */
-  .order{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-  .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px;
+  .order{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:36px;
     box-shadow:var(--shadow)}
   .field{margin-bottom:18px}
   .field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
   .field input,.field select,.field textarea{
     width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;
-    font:inherit;font-size:.95rem;color:var(--ink);background:#fff;transition:border-color .15s ease}
+    font:inherit;font-size:.95rem;color:var(--ink);background:#fff;
+    transition:border-color .2s ease,box-shadow .2s ease}
   .field input:focus,.field select:focus,.field textarea:focus{
     outline:none;border-color:var(--blue-400);box-shadow:0 0 0 4px var(--blue-50)}
   .field textarea{resize:vertical;min-height:92px}
@@ -160,59 +246,126 @@
   .form-card .btn-wa{width:100%;text-align:center;border:0;font-size:1rem;padding:15px}
   .note{font-size:.85rem;color:var(--muted);text-align:center;margin:14px 0 0}
   .err{color:#c62828;font-size:.85rem;margin-top:6px;display:none}
-  .err.show{display:block}
-  .cbox{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);
-    border-radius:14px;padding:22px;margin-bottom:16px}
-  .cbox .ico{margin:0;flex:0 0 48px}
-  .cbox h3{font-size:1rem;margin:0 0 3px}
-  .cbox p{margin:0;color:var(--muted);font-size:.95rem}
+  .err.show{display:block;animation:shake .4s ease}
+
+  .contact{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .contact iframe{display:block;width:100%;height:230px;border:0;filter:saturate(.9)}
+  .contact dl{margin:0;padding:8px 26px 14px}
+  .contact dl div{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .contact dl div:last-child{border-bottom:0}
+  .contact dt{flex:0 0 96px;font-weight:700;font-size:.9rem}
+  .contact dd{margin:0;color:var(--muted);font-size:.95rem}
 
   /* cta */
-  .cta{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));color:#fff;
-    border-radius:20px;padding:54px;text-align:center;box-shadow:var(--shadow)}
-  .cta h2{color:#fff}
-  .cta p{color:#d4e9ff;max-width:52ch;margin:0 auto 26px}
+  .cta{position:relative;border-radius:24px;overflow:hidden;color:#fff;padding:70px 56px;
+    background:
+      linear-gradient(90deg,rgba(0,27,51,.94) 0%,rgba(0,67,128,.78) 55%,rgba(0,67,128,.35) 100%),
+      url("assets/img/hero-bottles.jpg") center 70%/cover no-repeat}
+  .cta h2{color:#fff;max-width:18ch}
+  .cta p{color:#d4e9ff;max-width:48ch;margin:0 0 28px}
+  .cta .cta-row{margin-top:0}
 
   /* float button */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;
     border-radius:50%;background:var(--green);display:grid;place-items:center;
-    box-shadow:0 10px 26px rgba(37,211,102,.45);transition:transform .2s ease}
+    box-shadow:0 10px 26px rgba(37,211,102,.45);transition:transform .2s ease;
+    animation:pop .6s var(--ease) 1.5s backwards}
+  .wa-float::before,.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;
+    border:2px solid var(--green);animation:ring 2.6s ease-out infinite;pointer-events:none}
+  .wa-float::after{animation-delay:1.3s}
   .wa-float:hover{transform:scale(1.08)}
-  .wa-float svg{width:31px;height:31px;fill:#fff}
+  .wa-float svg{position:relative;width:31px;height:31px;fill:#fff}
 
   /* footer */
-  footer{background:var(--blue-900);color:#9fc4e3;padding:54px 0 26px;font-size:.93rem}
+  footer{background:var(--blue-900);color:#9fc4e3;padding:58px 0 26px;font-size:.93rem}
   .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:38px;padding-bottom:32px;
     border-bottom:1px solid rgba(255,255,255,.12)}
-  footer img{height:34px;background:#fff;padding:8px 12px;border-radius:10px;margin-bottom:14px}
+  footer .flogo{height:36px;width:auto;background:#fff;padding:8px 12px;border-radius:10px;
+    margin-bottom:14px;box-sizing:content-box}
   footer h4{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
   footer ul{list-style:none;padding:0;margin:0}
   footer li{padding:5px 0}
-  footer a{color:#9fc4e3}
-  footer a:hover{color:#fff}
+  footer a{color:#9fc4e3;transition:color .2s ease,padding .2s ease}
+  footer a:hover{color:#fff;padding-left:4px}
   .fbot{padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     font-size:.86rem;color:#6f9cc0}
 
+  /* ---------- scroll reveal ---------- */
+  /* only hide things when JS is running, so the page still shows without it */
+  .js .reveal{opacity:0}
+  .js .reveal.in{animation:var(--anim,fadeUp) .9s var(--ease) var(--delay,0s) both}
+  [data-anim="left"]{--anim:fadeLeft}
+  [data-anim="right"]{--anim:fadeRight}
+  [data-anim="zoom"]{--anim:zoomIn}
+  [data-anim="wipe"]{--anim:wipe}
+
+  /* ---------- keyframes ---------- */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  @keyframes fadeLeft{from{opacity:0;transform:translateX(-46px)}to{opacity:1;transform:none}}
+  @keyframes fadeRight{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
+  @keyframes zoomIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+  @keyframes wipe{from{opacity:1;clip-path:inset(0 100% 0 0 round 22px)}
+    to{opacity:1;clip-path:inset(-20% -20% -20% -20%)}}
+  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+  @keyframes photoIn{from{opacity:0;transform:translateY(40px) rotate(3deg) scale(.94)}to{opacity:1;transform:none}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes floatSm{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes pop{from{opacity:0;transform:scale(.6) translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes shimmer{to{background-position:-200% center}}
+  @keyframes glow{0%,100%{box-shadow:0 10px 22px rgba(37,211,102,.32)}
+    50%{box-shadow:0 10px 34px rgba(37,211,102,.65),0 0 0 6px rgba(37,211,102,.14)}}
+  @keyframes ring{from{transform:scale(1);opacity:.7}to{transform:scale(1.8);opacity:0}}
+  @keyframes bubble{0%{transform:translate(0,0);opacity:0}
+    10%{opacity:.85}50%{transform:translate(18px,-55vh)}
+    85%{opacity:.5}100%{transform:translate(-12px,-115vh);opacity:0}}
+  @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
   @media (max-width:980px){
-    .hero .wrap{grid-template-columns:1fr;padding-bottom:92px}
-    .droplet-art{order:-1}
-    .g3,.g4,.steps,.split,.order,.fgrid{grid-template-columns:1fr}
+    .hero .wrap{grid-template-columns:1fr;padding:64px 24px 130px;gap:48px}
+    .hero-photo{width:min(360px,88%)}
+    .chip.c1{left:-18px}
+    .chip.c2{right:-12px}
+    .stats .bar{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .g3,.steps,.split,.order,.fgrid{grid-template-columns:1fr}
+    .split{gap:56px}
+    .gallery{grid-template-columns:1fr 1fr;grid-template-rows:300px 220px}
+    .gallery figure:first-child{grid-row:auto;grid-column:span 2}
+    .why-photo{min-height:420px}
     nav.links{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;
       flex-direction:column;gap:0;padding:10px 24px 20px;border-bottom:1px solid var(--line)}
-    nav.links.open{display:flex}
+    nav.links.open{display:flex;animation:fadeUp .35s var(--ease)}
     nav.links a{width:100%;padding:12px 0;border-bottom:1px solid var(--line)}
+    nav.links a:not(.btn)::after{display:none}
     nav.links .btn{margin-top:12px;text-align:center;border-bottom:0}
     .menu-btn{display:block}
-    .panel,.cta,.form-card{padding:30px}
+    .form-card{padding:28px}
+    .cta{padding:50px 30px}
   }
   @media (max-width:560px){
-    section{padding:60px 0}
-    .g4{grid-template-columns:1fr 1fr}
-    .two{grid-template-columns:1fr}
+    section{padding:68px 0}
+    .points,.two{grid-template-columns:1fr}
+    .stat{padding:20px 18px}
+    .stat b{font-size:1.1rem}
+    .gallery{grid-template-columns:1fr;grid-template-rows:none}
+    .gallery figure{height:240px}
+    .gallery figure:first-child{grid-column:auto}
+    .photo-frame .badge{right:12px;bottom:-26px}
+    .contact dt{flex-basis:80px}
+  }
+
+  /* respect "reduce motion" setting on the phone / computer */
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .js .reveal{opacity:1}
+    .bubbles{display:none}
   }
 </style>
 </head>
 <body>
+
+<div class="progress" id="progress"></div>
 
 <header>
   <div class="wrap nav">
@@ -221,9 +374,9 @@
     <nav class="links" id="links">
       <a href="#about">About</a>
       <a href="#bottles">Bottles</a>
+      <a href="#factory">Factory</a>
       <a href="#how">How It Works</a>
       <a href="#why">Why Us</a>
-      <a href="#order">Order</a>
       <a class="btn btn-primary" href="#order">Get Price</a>
     </nav>
   </div>
@@ -231,124 +384,68 @@
 
 <!-- HERO -->
 <div class="hero" id="top">
+  <div class="bubbles" aria-hidden="true">
+    <span style="--x:6%;--s:14px;--t:13s;--d:0s"></span>
+    <span style="--x:14%;--s:8px;--t:10s;--d:-4s"></span>
+    <span style="--x:23%;--s:18px;--t:16s;--d:-9s"></span>
+    <span style="--x:31%;--s:10px;--t:12s;--d:-2s"></span>
+    <span style="--x:40%;--s:6px;--t:9s;--d:-6s"></span>
+    <span style="--x:48%;--s:16px;--t:15s;--d:-11s"></span>
+    <span style="--x:57%;--s:9px;--t:11s;--d:-3s"></span>
+    <span style="--x:65%;--s:20px;--t:18s;--d:-7s"></span>
+    <span style="--x:74%;--s:7px;--t:10s;--d:-1s"></span>
+    <span style="--x:82%;--s:13px;--t:14s;--d:-8s"></span>
+    <span style="--x:90%;--s:9px;--t:12s;--d:-5s"></span>
+    <span style="--x:96%;--s:15px;--t:17s;--d:-12s"></span>
+  </div>
   <div class="wrap">
-    <div>
+    <div class="hero-text">
       <span class="eyebrow">Rawat Industrial Area, Rawalpindi</span>
-      <h1>We make and sell <span>water bottles</span> in bulk.</h1>
-      <p>Waze Enterprises makes clean, clear water bottles and sells them in large quantity to water plants, shops and dealers all over Pakistan.</p>
+      <h1>Clean, clear <span>water bottles</span> in bulk.</h1>
+      <p>Waze Enterprises makes strong, food-safe water bottles and sells them in large quantity to water plants, shops and dealers all over Pakistan.</p>
       <div class="cta-row">
         <a class="btn btn-wa" href="#order">Order on WhatsApp</a>
         <a class="btn btn-line" href="#bottles">See Our Bottles</a>
       </div>
-      <div class="hero-stats">
-        <div><b>500ml &amp; 1500ml</b><span>Two main sizes</span></div>
-        <div><b>Best quality</b><span>Safe for drinking water</span></div>
-        <div><b>Bulk rates</b><span>Sold per 1,000 bottles</span></div>
-      </div>
     </div>
-    <div class="bottle-art">
-      <svg viewBox="0 0 150 330" role="img" aria-label="Water bottle">
-        <defs>
-          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%"   stop-color="#ffffff" stop-opacity=".34"/>
-            <stop offset="32%"  stop-color="#ffffff" stop-opacity=".10"/>
-            <stop offset="70%"  stop-color="#ffffff" stop-opacity=".07"/>
-            <stop offset="100%" stop-color="#ffffff" stop-opacity=".24"/>
-          </linearGradient>
-          <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%"   stop-color="#7fd4ff" stop-opacity=".85"/>
-            <stop offset="55%"  stop-color="#38bdf8" stop-opacity=".70"/>
-            <stop offset="100%" stop-color="#0ea5e9" stop-opacity=".80"/>
-          </linearGradient>
-          <clipPath id="bodyClip">
-            <path d="M40 92c0-9 4-13 4-22V58h62v12c0 9 4 13 4 22v192c0 16-9 26-25 26H65c-16 0-25-10-25-26V92z"/>
-          </clipPath>
-        </defs>
+    <figure class="hero-photo">
+      <img src="assets/img/hero-sizes.jpg" width="1000" height="1500"
+           alt="A 1500 ml and a 500 ml clear plastic water bottle side by side">
+      <div class="chip c1"><b>1500 ml &amp; 500 ml</b><span>Our two main sizes</span></div>
+      <div class="chip c2"><b>In stock</b><span>Ready to deliver</span></div>
+    </figure>
+  </div>
+</div>
 
-        <!-- cap -->
-        <rect x="50" y="10" width="50" height="30" rx="7" fill="#ffffff" opacity=".9"/>
-        <g stroke="#bcdcf7" stroke-width="1.4" opacity=".85">
-          <line x1="57" y1="14" x2="57" y2="36"/>
-          <line x1="65" y1="14" x2="65" y2="36"/>
-          <line x1="75" y1="14" x2="75" y2="36"/>
-          <line x1="85" y1="14" x2="85" y2="36"/>
-          <line x1="93" y1="14" x2="93" y2="36"/>
-        </g>
-        <!-- neck ring -->
-        <rect x="47" y="42" width="56" height="9" rx="4.5" fill="#ffffff" opacity=".55"/>
-        <rect x="53" y="51" width="44" height="9" rx="3" fill="#ffffff" opacity=".22"/>
-
-        <!-- body -->
-        <path d="M40 92c0-9 4-13 4-22V58h62v12c0 9 4 13 4 22v192c0 16-9 26-25 26H65c-16 0-25-10-25-26V92z"
-              fill="url(#glass)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
-
-        <!-- water inside -->
-        <g clip-path="url(#bodyClip)">
-          <path d="M36 128c14 0 14-8 28-8s14 8 28 8 14-8 28-8v188H36V128z" fill="url(#water)"/>
-          <!-- grip rings -->
-          <g stroke="rgba(255,255,255,.42)" stroke-width="5" stroke-linecap="round">
-            <line x1="36" y1="176" x2="114" y2="176"/>
-            <line x1="36" y1="196" x2="114" y2="196"/>
-            <line x1="36" y1="216" x2="114" y2="216"/>
-          </g>
-          <!-- shine -->
-          <rect x="52" y="72" width="10" height="222" rx="5" fill="#fff" opacity=".28"/>
-          <rect x="68" y="88" width="4" height="190" rx="2" fill="#fff" opacity=".16"/>
-        </g>
-
-        <!-- label -->
-        <rect x="40" y="148" width="74" height="70" fill="#ffffff"/>
-        <line x1="40" y1="148" x2="114" y2="148" stroke="#8fc4ee" stroke-width="1.2"/>
-        <line x1="40" y1="218" x2="114" y2="218" stroke="#8fc4ee" stroke-width="1.2"/>
-
-        <!-- small droplet mark, same idea as the logo -->
-        <path d="M77 156c0 0 6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 6-10 6-10z" fill="#1a8cff"/>
-        <path d="M77 166.5c0 0 2.6 2.8 2.6 4.4a2.6 2.6 0 0 1-5.2 0c0-1.6 2.6-4.4 2.6-4.4z" fill="#ffffff"/>
-
-        <text x="77" y="190" text-anchor="middle" fill="#004380"
-              font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700"
-              letter-spacing="1" textLength="48" lengthAdjust="spacingAndGlyphs">WAZE</text>
-        <text x="77" y="202" text-anchor="middle" fill="#0073e6"
-              font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700"
-              letter-spacing="1" textLength="58" lengthAdjust="spacingAndGlyphs">ENTERPRISES</text>
-
-        <line x1="58" y1="208" x2="96" y2="208" stroke="#b3d9ff" stroke-width="1.2"/>
-        <text x="77" y="214.5" text-anchor="middle" fill="#52708c"
-              font-family="Segoe UI, Arial, sans-serif" font-size="4.6" font-weight="600"
-              letter-spacing=".8" textLength="44" lengthAdjust="spacingAndGlyphs">DRINKING WATER BOTTLE</text>
-      </svg>
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="bar" data-stagger>
+      <div class="stat"><b><span data-count="500">500</span> ml · <span data-count="1500">1500</span> ml</b><span>Two main sizes</span></div>
+      <div class="stat"><b><span data-count="1000" data-comma>1,000</span> bottles</b><span>In every pack</span></div>
+      <div class="stat"><b>Food-safe PET</b><span>Safe for drinking water</span></div>
+      <div class="stat"><b>All Pakistan</b><span>Delivery available</span></div>
     </div>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="wrap">
-    <div class="head">
+  <div class="wrap split">
+    <figure class="photo-frame reveal" data-anim="wipe">
+      <img src="assets/img/factory-line.jpg" width="1600" height="1068" loading="lazy"
+           alt="Water bottles moving along a production line in a factory">
+      <div class="badge"><b>Our own factory</b><span>Rawat, Rawalpindi</span></div>
+    </figure>
+    <div class="reveal" data-anim="right">
       <span class="eyebrow">About us</span>
       <h2>Water bottles, made in our own factory</h2>
-      <p class="lead">We are Waze Enterprises from Rawat Industrial Area, Rawalpindi. We make our own water bottles in our factory and sell them in bulk. Because we make them ourselves, you get a fair price and the same quality every time.</p>
-    </div>
-    <div class="grid g4">
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.3 6 10a6 6 0 0 1-12 0c0-3.7 6-10 6-10z"/></svg></div>
-        <h3>Safe for water</h3>
-        <p>Our bottles are made from good quality plastic that is safe for drinking water.</p>
-      </div>
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M10 3h4v3l2 2v12H8V8l2-2V3z"/><path d="M8 12h8"/></svg></div>
-        <h3>Made by us</h3>
-        <p>We make every bottle in our own factory, so we can keep the quality the same.</p>
-      </div>
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
-        <h3>Bulk orders</h3>
-        <p>We sell in bags of 1,000 bottles. Big orders are always welcome.</p>
-      </div>
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>On time</h3>
-        <p>We keep bottles ready in stock, so your order goes out without long waiting.</p>
+      <p class="lead">We are Waze Enterprises from Rawat Industrial Area, Rawalpindi. We make our own water bottles and sell them in bulk. Because we make them ourselves, you get a fair price and the same quality every time.</p>
+      <div class="points" data-stagger>
+        <div><h3>Safe for water</h3><p>Good quality plastic that is safe for drinking water.</p></div>
+        <div><h3>Made by us</h3><p>Every bottle comes from our own factory line.</p></div>
+        <div><h3>Bulk orders</h3><p>Sold in bags of 1,000 bottles. Big orders welcome.</p></div>
+        <div><h3>On time</h3><p>Bottles kept ready in stock, so no long waiting.</p></div>
       </div>
     </div>
   </div>
@@ -357,54 +454,106 @@
 <!-- BOTTLES -->
 <section id="bottles" class="soft-bg">
   <div class="wrap">
-    <div class="head">
+    <div class="head center">
       <span class="eyebrow">Our bottles</span>
       <h2>Pick the size you need</h2>
       <p class="lead">These are the sizes we sell every day. Need a different size? Just ask us.</p>
     </div>
-    <div class="grid g3">
+    <div class="grid g3" data-stagger>
       <div class="product">
-        <div class="top"><em>Water bottle</em><h3>500 ml</h3></div>
-        <ul>
-          <li>Small bottle, most sold size</li>
-          <li>Clear and clean look</li>
-          <li>Fits normal caps</li>
-          <li>Sold in 1,000 bottle packs</li>
-        </ul>
-        <div class="foot"><a class="btn btn-primary" href="#order" data-size="500 ml Bottle">Ask Price</a></div>
+        <div class="ph">
+          <img src="assets/img/bottle-500ml.jpg" width="1000" height="1250" loading="lazy"
+               style="object-position:50% 55%" alt="Clear 500 ml water bottle with blue cap">
+          <span class="tag">Most sold</span>
+        </div>
+        <div class="body">
+          <h3>500 ml</h3>
+          <div class="sub">Small water bottle</div>
+          <ul>
+            <li>Our most popular size</li>
+            <li>Clear and clean look</li>
+            <li>Fits normal caps</li>
+            <li>Sold in 1,000 bottle packs</li>
+          </ul>
+          <a class="btn btn-primary" href="#order" data-size="500 ml Bottle">Ask Price</a>
+        </div>
       </div>
       <div class="product">
-        <div class="top"><em>Water bottle</em><h3>1500 ml</h3></div>
-        <ul>
-          <li>Big family size bottle</li>
-          <li>Strong bottom, no leaking</li>
-          <li>Fits normal caps</li>
-          <li>Sold in 1,000 bottle packs</li>
-        </ul>
-        <div class="foot"><a class="btn btn-primary" href="#order" data-size="1500 ml Bottle">Ask Price</a></div>
+        <div class="ph">
+          <img src="assets/img/bottle-1500ml.jpg" width="1200" height="800" loading="lazy"
+               style="object-position:30% 50%" alt="Two large 1500 ml water bottles with blue caps">
+          <span class="tag">Family size</span>
+        </div>
+        <div class="body">
+          <h3>1500 ml</h3>
+          <div class="sub">Large water bottle</div>
+          <ul>
+            <li>Big family size bottle</li>
+            <li>Strong bottom, no leaking</li>
+            <li>Fits normal caps</li>
+            <li>Sold in 1,000 bottle packs</li>
+          </ul>
+          <a class="btn btn-primary" href="#order" data-size="1500 ml Bottle">Ask Price</a>
+        </div>
       </div>
       <div class="product">
-        <div class="top"><em>Other size</em><h3>Made for you</h3></div>
-        <ul>
-          <li>Tell us the size you want</li>
-          <li>We make it for big orders</li>
-          <li>Sample shown before order</li>
-          <li>Monthly supply can be fixed</li>
-        </ul>
-        <div class="foot"><a class="btn btn-primary" href="#order" data-size="Other size">Ask Price</a></div>
+        <div class="ph">
+          <img src="assets/img/bottle-custom.jpg" width="1200" height="914" loading="lazy"
+               alt="Three water bottles with blank labels, ready for your brand">
+          <span class="tag">Custom</span>
+        </div>
+        <div class="body">
+          <h3>Other sizes</h3>
+          <div class="sub">Made for your order</div>
+          <ul>
+            <li>Tell us the size you want</li>
+            <li>We make it for big orders</li>
+            <li>Sample shown before order</li>
+            <li>Monthly supply can be fixed</li>
+          </ul>
+          <a class="btn btn-primary" href="#order" data-size="Other size">Ask Price</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW -->
-<section id="how">
+<!-- FACTORY -->
+<section id="factory">
   <div class="wrap">
     <div class="head">
+      <span class="eyebrow">Inside our factory</span>
+      <h2>Made with care, packed in bulk</h2>
+      <p class="lead">Modern machines, clean working areas and careful checking at every step — so every bag of 1,000 bottles is the same good quality.</p>
+    </div>
+    <div class="gallery" data-stagger data-anim="zoom">
+      <figure>
+        <img src="assets/img/factory-plant.jpg" width="1400" height="1051" loading="lazy"
+             alt="Inside a bottling factory with machines and conveyor lines">
+        <figcaption><b>Production hall</b><span>Machines running every working day</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/factory-machine.jpg" width="1200" height="801" loading="lazy"
+             alt="A plastic bottle on a factory production line">
+        <figcaption><b>Checked by hand</b><span>Every batch is inspected</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/bottles-close.jpg" width="1200" height="800" loading="lazy"
+             alt="Close-up of clear plastic bottles with blue caps">
+        <figcaption><b>Crystal clear</b><span>Food-safe PET plastic</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="soft-bg">
+  <div class="wrap">
+    <div class="head center">
       <span class="eyebrow">How it works</span>
       <h2>Ordering is simple</h2>
     </div>
-    <div class="steps">
+    <div class="steps" data-stagger>
       <div class="step">
         <h3>Tell us what you need</h3>
         <p>Fill the small form below, or send us a WhatsApp with the size and how many bottles you want.</p>
@@ -422,13 +571,13 @@
 </section>
 
 <!-- WHY -->
-<section id="why" class="soft-bg">
+<section id="why">
   <div class="wrap split">
-    <div>
+    <div class="reveal" data-anim="left">
       <span class="eyebrow">Why choose us</span>
       <h2>Good bottles, honest dealing</h2>
       <p class="lead">We have been supplying bottles to water plants and shops for a long time. Our customers stay with us because we keep our word.</p>
-      <ul class="checks">
+      <ul class="checks" data-stagger>
         <li>You get the full count you paid for</li>
         <li>Same quality in every order</li>
         <li>Clear rates, no extra charges later</li>
@@ -436,20 +585,21 @@
         <li>Easy to reach us on phone or WhatsApp</li>
       </ul>
     </div>
-    <div class="panel">
-      <h3>Quick information</h3>
-      <div class="row"><span>Sizes</span><b>500 ml · 1500 ml</b></div>
-      <div class="row"><span>Pack</span><b>1,000 bottles</b></div>
-      <div class="row"><span>Price</span><b>Ask us for rate</b></div>
-      <div class="row"><span>Order size</span><b>Bulk orders only</b></div>
-      <div class="row"><span>City</span><b>Rawalpindi</b></div>
-      <div class="row"><span>Delivery</span><b>All over Pakistan</b></div>
+    <div class="why-photo reveal" data-anim="right" role="img" aria-label="Rows of clear water bottles with white caps">
+      <div class="panel">
+        <h3>Quick information</h3>
+        <div class="row"><span>Sizes</span><b>500 ml · 1500 ml</b></div>
+        <div class="row"><span>Pack</span><b>1,000 bottles</b></div>
+        <div class="row"><span>Price</span><b>Ask us for rate</b></div>
+        <div class="row"><span>Order size</span><b>Bulk orders only</b></div>
+        <div class="row"><span>Delivery</span><b>All over Pakistan</b></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ORDER -->
-<section id="order">
+<section id="order" class="soft-bg">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Order now</span>
@@ -458,7 +608,7 @@
     </div>
 
     <div class="order">
-      <div class="form-card">
+      <div class="form-card reveal" data-anim="left">
         <form id="waForm" novalidate>
           <div class="two">
             <div class="field">
@@ -503,42 +653,26 @@
         </form>
       </div>
 
-      <div>
-        <div class="cbox">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5c0-1 .9-2 2-2h2l2 5-2 1a12 12 0 0 0 5 5l1-2 5 2v2c0 1.1-.9 2-2 2A16 16 0 0 1 4 5z"/></svg></div>
-          <div>
-            <h3>Call or WhatsApp</h3>
-            <p><a href="tel:+923439998954">0343-9998954</a></p>
-          </div>
-        </div>
-        <div class="cbox">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
-          <div>
-            <h3>Come and see us</h3>
-            <p>Street S-6, Rawat Industrial Area,<br>Rawalpindi, Pakistan</p>
-          </div>
-        </div>
-        <div class="cbox">
-          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <div>
-            <h3>Open hours</h3>
-            <p>Monday to Saturday<br>9:00 AM to 6:00 PM</p>
-          </div>
-        </div>
-        <div class="cbox" style="margin-bottom:0">
-          <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-          <div>
-            <h3>Proper bill</h3>
-            <p>You get a written bill with every order.</p>
-          </div>
-        </div>
+      <div class="contact reveal" data-anim="right">
+        <iframe title="Waze Enterprises location on map" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Rawat+Industrial+Area,+Rawalpindi,+Pakistan&output=embed"></iframe>
+        <dl>
+          <div><dt>Phone</dt><dd><a href="tel:+923439998954">0343-9998954</a> (Call or WhatsApp)</dd></div>
+          <div><dt>Address</dt><dd>Street S-6, Rawat Industrial Area,<br>Rawalpindi, Pakistan</dd></div>
+          <div><dt>Open</dt><dd>Monday to Saturday, 9:00 AM – 6:00 PM</dd></div>
+          <div><dt>Billing</dt><dd>Written bill with every order</dd></div>
+        </dl>
       </div>
     </div>
 
-    <div class="cta" style="margin-top:54px">
+    <div class="cta reveal" data-anim="zoom" style="margin-top:64px">
       <h2>Need bottles this month?</h2>
       <p>We have 500 ml and 1500 ml bottles ready in stock. Call us today and we will keep them for you.</p>
-      <a class="btn btn-light" href="tel:+923439998954">Call 0343-9998954</a>
+      <div class="cta-row">
+        <a class="btn btn-light" href="tel:+923439998954">Call 0343-9998954</a>
+        <a class="btn btn-line" href="#order" id="ctaWa">WhatsApp us</a>
+      </div>
     </div>
   </div>
 </section>
@@ -547,7 +681,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <img src="assets/Waze_logo.png" alt="Waze Enterprises">
+        <img class="flogo" src="assets/Waze_logo.png" alt="Waze Enterprises">
         <p>We make and sell water bottles in bulk from Rawat Industrial Area, Rawalpindi.</p>
       </div>
       <div>
@@ -555,7 +689,7 @@
         <ul>
           <li><a href="#about">About us</a></li>
           <li><a href="#bottles">Our bottles</a></li>
-          <li><a href="#how">How it works</a></li>
+          <li><a href="#factory">Our factory</a></li>
           <li><a href="#order">Order now</a></li>
         </ul>
       </div>
@@ -582,6 +716,7 @@
 
 <script>
   var WA_NUMBER = "923439998954"; // Waze Enterprises WhatsApp number
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -591,6 +726,16 @@
   links.addEventListener('click', function(e){
     if (e.target.tagName === 'A') links.classList.remove('open');
   });
+
+  // header shadow + scroll progress bar
+  var header = document.querySelector('header'), bar = document.getElementById('progress');
+  function onScroll(){
+    var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    header.classList.toggle('scrolled', y > 10);
+    bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // "Ask Price" buttons pick the size in the form
   var sizeBox = document.getElementById('size');
@@ -607,9 +752,59 @@
     return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
   }
 
-  // floating button
-  document.getElementById('waFloat').href =
-    waLink("Assalam o Alaikum, I want to ask about water bottles.");
+  // floating + CTA whatsapp buttons
+  var hello = waLink("Assalam o Alaikum, I want to ask about water bottles.");
+  document.getElementById('waFloat').href = hello;
+  var ctaWa = document.getElementById('ctaWa');
+  ctaWa.href = hello; ctaWa.target = "_blank"; ctaWa.rel = "noopener";
+
+  // numbers count up from zero
+  function countUp(el){
+    var end = +el.getAttribute('data-count'), comma = el.hasAttribute('data-comma'), start = null;
+    function fmt(n){ return comma ? n.toLocaleString('en-US') : String(n); }
+    if (reduceMotion) { el.textContent = fmt(end); return; }
+    el.textContent = fmt(0);
+    function tick(t){
+      if (start === null) start = t;
+      var p = Math.min((t - start) / 1500, 1), eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(end * eased));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // section headings reveal too, and children of [data-stagger] come in one after another
+  document.querySelectorAll('.head').forEach(function(h){ h.classList.add('reveal'); });
+  document.querySelectorAll('[data-stagger]').forEach(function(parent){
+    Array.prototype.forEach.call(parent.children, function(child, i){
+      child.classList.add('reveal');
+      child.style.setProperty('--delay', (i * 0.12) + 's');
+    });
+  });
+
+  // play the reveal once, then drop the classes so hover effects work normally
+  function show(el){
+    el.classList.add('in');
+    el.querySelectorAll('[data-count]').forEach(countUp);
+    el.addEventListener('animationend', function done(e){
+      if (e.target !== el) return;
+      el.classList.remove('reveal', 'in');
+      el.style.removeProperty('--delay');
+      el.removeEventListener('animationend', done);
+    });
+  }
+
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { show(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.remove('reveal'); });
+  }
 
   // form -> whatsapp message
   document.getElementById('waForm').addEventListener('submit', function(e){
@@ -622,7 +817,11 @@
     var msg   = document.getElementById('msg').value.trim();
     var err   = document.getElementById('err');
 
-    if (!name || !phone) { err.classList.add('show'); return; }
+    if (!name || !phone) {
+      err.classList.remove('show'); void err.offsetWidth; // restart the shake
+      err.classList.add('show');
+      return;
+    }
     err.classList.remove('show');
 
     var lines = [
