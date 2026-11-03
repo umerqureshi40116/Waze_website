@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Waze Enterprises — Water Bottles in Rawalpindi</title>
-<meta name="description" content="Waze Enterprises sells 500ml and 1500ml water bottles in bulk. Based in Rawat Industrial Area, Rawalpindi. Order on WhatsApp.">
+<title>Waze Bottling — 19 Litre &amp; 500 ml Empty Bottles in Rawalpindi</title>
+<meta name="description" content="Waze Bottling makes and sells empty 19 litre water bottles and 500 ml (half litre) PET bottles in bulk. Plain or branded. Rawat Industrial Area, Rawalpindi. Order on WhatsApp.">
 <link rel="icon" href="assets/Waze_logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/hero-bottles.jpg">
+<link rel="preload" as="image" href="assets/img/19_leter.jpeg">
 <script>document.documentElement.className += " js";</script>
 <style>
   :root{
@@ -90,10 +90,11 @@
   /* hero */
   .hero{position:relative;overflow:hidden;color:#fff;background:var(--blue-900)}
   .hero::before{content:"";position:absolute;inset:0;
-    background:url("assets/img/hero-bottles.jpg") center/cover no-repeat;
+    background:radial-gradient(60% 70% at 80% 40%,rgba(26,140,255,.45),transparent 70%),
+      radial-gradient(40% 50% at 10% 90%,rgba(92,200,255,.18),transparent 70%);
     animation:kenburns 26s ease-in-out infinite alternate}
   .hero::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(100deg,rgba(0,20,38,.96) 0%,rgba(0,43,77,.90) 42%,rgba(0,67,128,.55) 100%)}
+    background:linear-gradient(100deg,rgba(0,20,38,.9) 0%,rgba(0,43,77,.6) 50%,rgba(0,67,128,.2) 100%)}
   .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;
     align-items:center;padding:90px 24px 150px}
   .hero h1{font-size:clamp(2.2rem,4.8vw,3.7rem);font-weight:800;color:#fff}
@@ -121,7 +122,7 @@
 
   .hero-photo{position:relative;margin:0;justify-self:center;width:min(430px,100%);
     animation:photoIn 1.1s var(--ease) .25s both}
-  .hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:26px;
+  .hero-photo img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:26px;
     border:6px solid rgba(255,255,255,.14);box-shadow:var(--shadow-lg);
     animation:float 7s ease-in-out 1.4s infinite}
   .chip{position:absolute;background:#fff;color:var(--ink);border-radius:14px;
@@ -151,17 +152,23 @@
   .head.center .eyebrow{justify-content:center}
   .head.center .lead{margin:0 auto}
   .grid{display:grid;gap:26px}
-  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr);max-width:980px;margin:0 auto}
+  .also{text-align:center;color:var(--muted);margin:36px auto 0;max-width:60ch}
+  .also b{color:var(--ink)}
+  .also a{font-weight:700;margin-left:6px;white-space:nowrap}
 
   /* about */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .photo-frame{position:relative;margin:0}
   .photo-frame img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:22px;box-shadow:var(--shadow)}
+  .photo-frame.tall{max-width:440px;justify-self:center}
+  .photo-frame.tall img{aspect-ratio:3/4}
   .photo-frame .badge{position:absolute;right:-18px;bottom:-22px;background:var(--blue-700);
     color:#fff;border-radius:16px;padding:18px 22px;box-shadow:var(--shadow);line-height:1.3}
   .photo-frame .badge b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.15rem}
   .photo-frame .badge span{font-size:.82rem;color:var(--blue-100)}
   .points{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;margin-top:30px}
+  .points.p4{grid-template-columns:repeat(4,1fr);margin-top:0}
   .points div{border-left:3px solid var(--blue-400);padding-left:16px}
   .points h3{font-size:1.02rem;margin:0 0 4px}
   .points p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.6}
@@ -172,7 +179,7 @@
     transition:transform .25s ease,box-shadow .25s ease}
   .product:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
   .product .ph{position:relative;overflow:hidden;background:var(--blue-50)}
-  .product .ph img{width:100%;aspect-ratio:5/4;object-fit:cover;transition:transform .6s var(--ease)}
+  .product .ph img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s var(--ease)}
   .product:hover .ph img{transform:scale(1.06)}
   .product .tag{position:absolute;left:16px;top:16px;background:#fff;color:var(--blue-700);
     font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
@@ -185,18 +192,6 @@
   .product li::before{content:"";position:absolute;left:2px;top:15px;width:9px;height:9px;
     border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--blue-400)}
   .product .btn{text-align:center}
-
-  /* factory gallery */
-  .gallery{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:260px 260px;gap:20px}
-  .gallery figure{position:relative;margin:0;overflow:hidden;border-radius:var(--r)}
-  .gallery figure:first-child{grid-row:span 2}
-  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-  .gallery figure:hover img{transform:scale(1.06)}
-  .gallery figcaption{position:absolute;inset:auto 0 0 0;padding:40px 22px 18px;color:#fff;
-    background:linear-gradient(to top,rgba(0,20,38,.85),transparent);transition:padding .4s var(--ease)}
-  .gallery figure:hover figcaption{padding-bottom:26px}
-  .gallery figcaption b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.05rem}
-  .gallery figcaption span{font-size:.88rem;color:#cfe3f7}
 
   /* steps */
   .steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
@@ -216,10 +211,10 @@
   .checks li::before{content:"✓";position:absolute;left:0;top:10px;width:24px;height:24px;
     border-radius:50%;background:var(--blue-500);color:#fff;font-size:.75rem;font-weight:800;
     display:grid;place-items:center}
-  .why-photo{position:relative;border-radius:22px;overflow:hidden;min-height:480px;
+  .why-photo{position:relative;border-radius:22px;overflow:hidden;
     display:flex;align-items:flex-end;padding:26px;box-shadow:var(--shadow);
-    background:url("assets/img/bottles-rows.jpg") center/cover no-repeat;
-    transition:background-size .8s ease}
+    background:radial-gradient(70% 60% at 85% 10%,rgba(92,200,255,.45),transparent 70%),
+      linear-gradient(140deg,var(--blue-700),var(--blue-900))}
   .panel{width:100%;background:rgba(0,27,51,.82);backdrop-filter:blur(8px);
     border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px 28px;color:#fff}
   .panel h3{color:#fff;font-size:1.05rem;margin-bottom:6px}
@@ -259,8 +254,8 @@
   /* cta */
   .cta{position:relative;border-radius:24px;overflow:hidden;color:#fff;padding:70px 56px;
     background:
-      linear-gradient(90deg,rgba(0,27,51,.94) 0%,rgba(0,67,128,.78) 55%,rgba(0,67,128,.35) 100%),
-      url("assets/img/hero-bottles.jpg") center 70%/cover no-repeat}
+      radial-gradient(60% 90% at 90% 50%,rgba(92,200,255,.4),transparent 70%),
+      linear-gradient(90deg,var(--blue-900) 0%,var(--blue-700) 100%)}
   .cta h2{color:#fff;max-width:18ch}
   .cta p{color:#d4e9ff;max-width:48ch;margin:0 0 28px}
   .cta .cta-row{margin-top:0}
@@ -328,11 +323,9 @@
     .stats .bar{grid-template-columns:1fr 1fr}
     .stat:nth-child(2){border-right:0}
     .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
-    .g3,.steps,.split,.order,.fgrid{grid-template-columns:1fr}
+    .steps,.split,.order,.fgrid{grid-template-columns:1fr}
     .split{gap:56px}
-    .gallery{grid-template-columns:1fr 1fr;grid-template-rows:300px 220px}
-    .gallery figure:first-child{grid-row:auto;grid-column:span 2}
-    .why-photo{min-height:420px}
+    .points.p4{grid-template-columns:1fr 1fr}
     nav.links{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;
       flex-direction:column;gap:0;padding:10px 24px 20px;border-bottom:1px solid var(--line)}
     nav.links.open{display:flex;animation:fadeUp .35s var(--ease)}
@@ -345,12 +338,9 @@
   }
   @media (max-width:560px){
     section{padding:68px 0}
-    .points,.two{grid-template-columns:1fr}
+    .points,.points.p4,.two,.g2{grid-template-columns:1fr}
     .stat{padding:20px 18px}
     .stat b{font-size:1.1rem}
-    .gallery{grid-template-columns:1fr;grid-template-rows:none}
-    .gallery figure{height:240px}
-    .gallery figure:first-child{grid-column:auto}
     .photo-frame .badge{right:12px;bottom:-26px}
     .contact dt{flex-basis:80px}
   }
@@ -374,7 +364,7 @@
     <nav class="links" id="links">
       <a href="#about">About</a>
       <a href="#bottles">Bottles</a>
-      <a href="#factory">Factory</a>
+      <a href="#moulds">Branding</a>
       <a href="#how">How It Works</a>
       <a href="#why">Why Us</a>
       <a class="btn btn-primary" href="#order">Get Price</a>
@@ -401,18 +391,16 @@
   <div class="wrap">
     <div class="hero-text">
       <span class="eyebrow">Rawat Industrial Area, Rawalpindi</span>
-      <h1>Clean, clear <span>water bottles</span> in bulk.</h1>
-      <p>Waze Enterprises makes strong, food-safe water bottles and sells them in large quantity to water plants, shops and dealers all over Pakistan.</p>
+      <h1>Empty <span>19 litre</span> &amp; <span>half litre</span> bottles in bulk.</h1>
+      <p>Waze Bottling makes strong, food-safe <b>empty</b> 19 litre water bottles and 500 ml PET bottles — you fill them with your own water. Plain or with your brand on it. We supply water plants, dealers and shops all over Pakistan.</p>
       <div class="cta-row">
-        <a class="btn btn-wa" href="#order">Order on WhatsApp</a>
+        <a class="btn btn-wa" href="#order" data-size="19 Litre Bottle">Order 19 Litre Bottles</a>
         <a class="btn btn-line" href="#bottles">See Our Bottles</a>
       </div>
     </div>
     <figure class="hero-photo">
-      <img src="assets/img/hero-sizes.jpg" width="1000" height="1500"
-           alt="A 1500 ml and a 500 ml clear plastic water bottle side by side">
-      <div class="chip c1"><b>1500 ml &amp; 500 ml</b><span>Our two main sizes</span></div>
-      <div class="chip c2"><b>In stock</b><span>Ready to deliver</span></div>
+      <img src="assets/img/19_leter.jpeg" width="1066" height="1599"
+           alt="Empty 19 litre Waze Bottling water bottle — 795 gram, BPA free, plain or branded">
     </figure>
   </div>
 </div>
@@ -421,32 +409,27 @@
 <div class="stats">
   <div class="wrap">
     <div class="bar" data-stagger>
-      <div class="stat"><b><span data-count="500">500</span> ml · <span data-count="1500">1500</span> ml</b><span>Two main sizes</span></div>
-      <div class="stat"><b><span data-count="1000" data-comma>1,000</span> bottles</b><span>In every pack</span></div>
-      <div class="stat"><b>Food-safe PET</b><span>Safe for drinking water</span></div>
-      <div class="stat"><b>All Pakistan</b><span>Delivery available</span></div>
+      <div class="stat"><b><span data-count="19">19</span> L · <span data-count="500">500</span> ml</b><span>Our two main bottles</span></div>
+      <div class="stat"><b><span data-count="795">795</span> gram</b><span>Strong 19 litre bottle</span></div>
+      <div class="stat"><b>BPA free</b><span>Empty &amp; ready to fill</span></div>
+      <div class="stat"><b>Your brand</b><span>Branding &amp; labels available</span></div>
     </div>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="wrap split">
-    <figure class="photo-frame reveal" data-anim="wipe">
-      <img src="assets/img/factory-line.jpg" width="1600" height="1068" loading="lazy"
-           alt="Water bottles moving along a production line in a factory">
-      <div class="badge"><b>Our own factory</b><span>Rawat, Rawalpindi</span></div>
-    </figure>
-    <div class="reveal" data-anim="right">
+  <div class="wrap">
+    <div class="head center">
       <span class="eyebrow">About us</span>
-      <h2>Water bottles, made in our own factory</h2>
-      <p class="lead">We are Waze Enterprises from Rawat Industrial Area, Rawalpindi. We make our own water bottles and sell them in bulk. Because we make them ourselves, you get a fair price and the same quality every time.</p>
-      <div class="points" data-stagger>
-        <div><h3>Safe for water</h3><p>Good quality plastic that is safe for drinking water.</p></div>
-        <div><h3>Made by us</h3><p>Every bottle comes from our own factory line.</p></div>
-        <div><h3>Bulk orders</h3><p>Sold in bags of 1,000 bottles. Big orders welcome.</p></div>
-        <div><h3>On time</h3><p>Bottles kept ready in stock, so no long waiting.</p></div>
-      </div>
+      <h2>Empty bottles, made in our own factory</h2>
+      <p class="lead">We are Waze Bottling (Waze Enterprises) from Rawat Industrial Area, Rawalpindi. We make <b>empty</b> 19 litre water bottles and 500 ml PET bottles and sell them in bulk — we do not fill or sell water.</p>
+    </div>
+    <div class="points p4" data-stagger>
+      <div><h3>Safe for water</h3><p>BPA free, food-grade plastic, safe for the drinking water you fill in it.</p></div>
+      <div><h3>Made by us</h3><p>Every bottle comes from our own factory in Rawat.</p></div>
+      <div><h3>Bulk orders</h3><p>For water plants, dealers and shops. Big orders welcome.</p></div>
+      <div><h3>Your brand</h3><p>Get your name and label on the bottles, or buy them plain.</p></div>
     </div>
   </div>
 </section>
@@ -456,93 +439,77 @@
   <div class="wrap">
     <div class="head center">
       <span class="eyebrow">Our bottles</span>
-      <h2>Pick the size you need</h2>
-      <p class="lead">These are the sizes we sell every day. Need a different size? Just ask us.</p>
+      <h2>Our two main bottles</h2>
+      <p class="lead">Every bottle is sold <b>empty</b>, ready for you to fill. Buy them plain, or get your own brand and label on them.</p>
     </div>
-    <div class="grid g3" data-stagger>
+    <div class="grid g2" data-stagger>
       <div class="product">
         <div class="ph">
-          <img src="assets/img/bottle-500ml.jpg" width="1000" height="1250" loading="lazy"
-               style="object-position:50% 55%" alt="Clear 500 ml water bottle with blue cap">
-          <span class="tag">Most sold</span>
+          <img src="assets/img/19_leter.jpeg" width="1066" height="1599" loading="lazy"
+               style="object-position:50% 45%" alt="Empty 19 litre Waze Bottling water bottle">
+          <span class="tag">Main product</span>
         </div>
         <div class="body">
-          <h3>500 ml</h3>
-          <div class="sub">Small water bottle</div>
+          <h3>19 Litre</h3>
+          <div class="sub">Empty water bottle for dispensers</div>
           <ul>
-            <li>Our most popular size</li>
-            <li>Clear and clean look</li>
-            <li>Fits normal caps</li>
-            <li>Sold in 1,000 bottle packs</li>
+            <li>795 gram — light but strong and durable</li>
+            <li>Premium quality, BPA free, hygienic</li>
+            <li>Plain clear bottle, ready for branding</li>
+            <li>Custom branding and labels on empty bottles</li>
+            <li>For water plants and home delivery businesses</li>
           </ul>
-          <a class="btn btn-primary" href="#order" data-size="500 ml Bottle">Ask Price</a>
+          <a class="btn btn-primary" href="#order" data-size="19 Litre Bottle">Ask 19 Litre Price</a>
         </div>
       </div>
       <div class="product">
         <div class="ph">
-          <img src="assets/img/bottle-1500ml.jpg" width="1200" height="800" loading="lazy"
-               style="object-position:30% 50%" alt="Two large 1500 ml water bottles with blue caps">
-          <span class="tag">Family size</span>
+          <img src="assets/img/IMG-20261007-WA0019.jpg" width="678" height="1281" loading="lazy"
+               style="object-position:50% 90%" alt="Empty half litre (500 ml) and bigger PET bottles in front of the Waze Bottling sign">
+          <span class="tag">Half litre</span>
         </div>
         <div class="body">
-          <h3>1500 ml</h3>
-          <div class="sub">Large water bottle</div>
+          <h3>500 ml</h3>
+          <div class="sub">Empty half litre PET bottle</div>
           <ul>
-            <li>Big family size bottle</li>
+            <li>Our most popular small size</li>
+            <li>Crystal clear, food-safe PET</li>
             <li>Strong bottom, no leaking</li>
             <li>Fits normal caps</li>
             <li>Sold in 1,000 bottle packs</li>
           </ul>
-          <a class="btn btn-primary" href="#order" data-size="1500 ml Bottle">Ask Price</a>
-        </div>
-      </div>
-      <div class="product">
-        <div class="ph">
-          <img src="assets/img/bottle-custom.jpg" width="1200" height="914" loading="lazy"
-               alt="Three water bottles with blank labels, ready for your brand">
-          <span class="tag">Custom</span>
-        </div>
-        <div class="body">
-          <h3>Other sizes</h3>
-          <div class="sub">Made for your order</div>
-          <ul>
-            <li>Tell us the size you want</li>
-            <li>We make it for big orders</li>
-            <li>Sample shown before order</li>
-            <li>Monthly supply can be fixed</li>
-          </ul>
-          <a class="btn btn-primary" href="#order" data-size="Other size">Ask Price</a>
+          <a class="btn btn-primary" href="#order" data-size="500 ml Bottle">Ask 500 ml Price</a>
         </div>
       </div>
     </div>
+    <p class="also reveal">Also available: <b>1500 ml</b> bottles and <b>customized moulds</b> for your own bottle shape.
+      <a href="#order" data-size="Other (1500 ml / custom mould)">Ask us &rarr;</a></p>
   </div>
 </section>
 
-<!-- FACTORY -->
-<section id="factory">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Inside our factory</span>
-      <h2>Made with care, packed in bulk</h2>
-      <p class="lead">Modern machines, clean working areas and careful checking at every step — so every bag of 1,000 bottles is the same good quality.</p>
+<!-- MOULDS -->
+<section id="moulds">
+  <div class="wrap split">
+    <div class="reveal" data-anim="left">
+      <span class="eyebrow">Branding</span>
+      <h2>Your brand on our 19 litre bottles</h2>
+      <p class="lead">Running a water plant? Get empty 19 litre and 500 ml bottles with <b>your own name and label</b> on them — or buy them plain and clear, ready for your own branding.</p>
+      <ul class="checks" data-stagger>
+        <li>Custom branding on empty 19 litre bottles</li>
+        <li>Labeling service available</li>
+        <li>Plain clear bottles also available</li>
+        <li>Same strong 795 gram bottle, branded or plain</li>
+        <li>Customized moulds for your own 500 ml bottle shape</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#order" data-size="Branding on 19 Litre bottles">Ask Branding Price</a>
+      </div>
     </div>
-    <div class="gallery" data-stagger data-anim="zoom">
-      <figure>
-        <img src="assets/img/factory-plant.jpg" width="1400" height="1051" loading="lazy"
-             alt="Inside a bottling factory with machines and conveyor lines">
-        <figcaption><b>Production hall</b><span>Machines running every working day</span></figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/factory-machine.jpg" width="1200" height="801" loading="lazy"
-             alt="A plastic bottle on a factory production line">
-        <figcaption><b>Checked by hand</b><span>Every batch is inspected</span></figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/bottles-close.jpg" width="1200" height="800" loading="lazy"
-             alt="Close-up of clear plastic bottles with blue caps">
-        <figcaption><b>Crystal clear</b><span>Food-safe PET plastic</span></figcaption>
-      </figure>
-    </div>
+    <figure class="photo-frame tall reveal" data-anim="wipe">
+      <img src="assets/img/IMG-20261007-WA0018.jpg" width="1086" height="1448" loading="lazy"
+           alt="Empty Waze Bottling PET bottles in front of the Waze Bottling sign">
+      <div class="badge"><b>Plain or branded</b><span>Made in our own factory</span></div>
+    </figure>
   </div>
 </section>
 
@@ -556,7 +523,7 @@
     <div class="steps" data-stagger>
       <div class="step">
         <h3>Tell us what you need</h3>
-        <p>Fill the small form below, or send us a WhatsApp with the size and how many bottles you want.</p>
+        <p>Fill the small form below, or send us a WhatsApp with the size (19 litre or 500 ml), the quantity, and if you want your brand on it.</p>
       </div>
       <div class="step">
         <h3>We give you the price</h3>
@@ -576,7 +543,7 @@
     <div class="reveal" data-anim="left">
       <span class="eyebrow">Why choose us</span>
       <h2>Good bottles, honest dealing</h2>
-      <p class="lead">We have been supplying bottles to water plants and shops for a long time. Our customers stay with us because we keep our word.</p>
+      <p class="lead">We have been supplying empty bottles to water plants, dealers and shops for a long time. Our customers stay with us because we keep our word.</p>
       <ul class="checks" data-stagger>
         <li>You get the full count you paid for</li>
         <li>Same quality in every order</li>
@@ -585,13 +552,15 @@
         <li>Easy to reach us on phone or WhatsApp</li>
       </ul>
     </div>
-    <div class="why-photo reveal" data-anim="right" role="img" aria-label="Rows of clear water bottles with white caps">
+    <div class="why-photo reveal" data-anim="right">
       <div class="panel">
         <h3>Quick information</h3>
-        <div class="row"><span>Sizes</span><b>500 ml · 1500 ml</b></div>
-        <div class="row"><span>Pack</span><b>1,000 bottles</b></div>
+        <div class="row"><span>We sell</span><b>Empty bottles</b></div>
+        <div class="row"><span>Main sizes</span><b>19 litre · 500 ml</b></div>
+        <div class="row"><span>19 L weight</span><b>795 gram</b></div>
+        <div class="row"><span>Branding</span><b>Plain or with your label</b></div>
         <div class="row"><span>Price</span><b>Ask us for rate</b></div>
-        <div class="row"><span>Order size</span><b>Bulk orders only</b></div>
+        <div class="row"><span>Order size</span><b>Bulk orders</b></div>
         <div class="row"><span>Delivery</span><b>All over Pakistan</b></div>
       </div>
     </div>
@@ -604,7 +573,7 @@
     <div class="head">
       <span class="eyebrow">Order now</span>
       <h2>Fill this form and send on WhatsApp</h2>
-      <p class="lead">Write your details below and press the button. Your message will open in WhatsApp and come straight to us. We will reply with the price.</p>
+      <p class="lead">Write your details below and press the button. Your message will open in WhatsApp and come straight to us. We will reply with the price for the bottles.</p>
     </div>
 
     <div class="order">
@@ -628,12 +597,13 @@
 
           <div class="two">
             <div class="field">
-              <label for="size">Bottle size</label>
+              <label for="size">What do you need</label>
               <select id="size">
+                <option>19 Litre Bottle</option>
                 <option>500 ml Bottle</option>
-                <option>1500 ml Bottle</option>
-                <option>Both sizes</option>
-                <option>Other size</option>
+                <option>Both (19 Litre + 500 ml)</option>
+                <option>Branding on 19 Litre bottles</option>
+                <option>Other (1500 ml / custom mould)</option>
               </select>
             </div>
             <div class="field">
@@ -658,7 +628,7 @@
                 referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.google.com/maps?q=Rawat+Industrial+Area,+Rawalpindi,+Pakistan&output=embed"></iframe>
         <dl>
-          <div><dt>Phone</dt><dd><a href="tel:+923439998954">0343-9998954</a> (Call or WhatsApp)</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+923171314143">0317-1314143</a> (Call or WhatsApp)</dd></div>
           <div><dt>Address</dt><dd>Street S-6, Rawat Industrial Area,<br>Rawalpindi, Pakistan</dd></div>
           <div><dt>Open</dt><dd>Monday to Saturday, 9:00 AM – 6:00 PM</dd></div>
           <div><dt>Billing</dt><dd>Written bill with every order</dd></div>
@@ -668,9 +638,9 @@
 
     <div class="cta reveal" data-anim="zoom" style="margin-top:64px">
       <h2>Need bottles this month?</h2>
-      <p>We have 500 ml and 1500 ml bottles ready in stock. Call us today and we will keep them for you.</p>
+      <p>We have empty 19 litre and 500 ml bottles ready in stock — plain or with your brand. Call us today.</p>
       <div class="cta-row">
-        <a class="btn btn-light" href="tel:+923439998954">Call 0343-9998954</a>
+        <a class="btn btn-light" href="tel:+923171314143">Call 0317-1314143</a>
         <a class="btn btn-line" href="#order" id="ctaWa">WhatsApp us</a>
       </div>
     </div>
@@ -682,21 +652,21 @@
     <div class="fgrid">
       <div>
         <img class="flogo" src="assets/Waze_logo.png" alt="Waze Enterprises">
-        <p>We make and sell water bottles in bulk from Rawat Industrial Area, Rawalpindi.</p>
+        <p>Waze Bottling makes and sells empty 19 litre and 500 ml bottles in bulk, plain or branded, from Rawat Industrial Area, Rawalpindi.</p>
       </div>
       <div>
         <h4>Pages</h4>
         <ul>
           <li><a href="#about">About us</a></li>
           <li><a href="#bottles">Our bottles</a></li>
-          <li><a href="#factory">Our factory</a></li>
+          <li><a href="#moulds">Branding</a></li>
           <li><a href="#order">Order now</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+923439998954">0343-9998954</a></li>
+          <li><a href="tel:+923171314143">0317-1314143</a></li>
           <li>Street S-6, Rawat Industrial Area</li>
           <li>Rawalpindi, Pakistan</li>
           <li>Mon – Sat, 9 AM – 6 PM</li>
@@ -715,7 +685,7 @@
 </a>
 
 <script>
-  var WA_NUMBER = "923439998954"; // Waze Enterprises WhatsApp number
+  var WA_NUMBER = "923171314143"; // Waze Enterprises WhatsApp number
   var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.getElementById('yr').textContent = new Date().getFullYear();
@@ -753,7 +723,7 @@
   }
 
   // floating + CTA whatsapp buttons
-  var hello = waLink("Assalam o Alaikum, I want to ask about water bottles.");
+  var hello = waLink("Assalam o Alaikum, I want to ask about empty 19 litre / 500 ml bottles.");
   document.getElementById('waFloat').href = hello;
   var ctaWa = document.getElementById('ctaWa');
   ctaWa.href = hello; ctaWa.target = "_blank"; ctaWa.rel = "noopener";
@@ -827,13 +797,13 @@
     var lines = [
       "Assalam o Alaikum Waze Enterprises,",
       "",
-      "I want to order water bottles.",
+      "I want to ask about empty bottles.",
       "",
       "Name: " + name,
       "Phone: " + phone
     ];
     if (city) lines.push("City: " + city);
-    lines.push("Bottle size: " + size);
+    lines.push("Needed: " + size);
     if (qty) lines.push("Quantity: " + qty + " bottles");
     if (msg) lines.push("", "Note: " + msg);
     lines.push("", "Please tell me the price. Thank you.");
